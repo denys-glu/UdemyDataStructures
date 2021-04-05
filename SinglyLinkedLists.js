@@ -27,21 +27,24 @@ class SinglyLinkedList {
   }
 
   pop() {
-    if (!this.head) {
-      return undefined
-    } else {
-      let walker = this.head;
-      let runner = this.head.next;
-      while (runner) {
-        walker = walker.next;
-        runner = runner.next;
-      }
-      walker.next = null;
-      this.tail = walker;
+    if (!this.head) return undefined
+
+    let runner = this.head;
+    let walker = runner;
+    while (runner.next) {
+      walker = runner;
+      runner = runner.next;
     }
 
-    this.length += 1;
-    return this;
+    this.tail = walker;
+    this.tail.next = null;
+    this.length -= 1;
+    if (this.length === 0) {
+      this.head = null;
+      this.tail = null;
+    }
+
+    return runner;
   }
 
   printList() {
