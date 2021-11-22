@@ -65,3 +65,24 @@ function fib(num) {
 // fib(10) // 55
 // fib(28) // 317811
 // fib(35) // 9227465
+
+// Write a recursive function called reverse which accepts a string and returns a new string in reverse.
+
+function reverse(word){
+  // First attempt
+  // let result = '';
+  // function helper(letters) {
+  //   if (letters.length === 0) return "";
+  //   result += letters[letters.length-1];
+  //   return helper(letters.slice(0, letters.length-1));
+  // }
+  // helper(word);
+  // return result;
+
+  // Second attempt
+  if (word.length <= 1) return word;
+	return reverse(word.slice(1)) + word[0];
+}
+
+// reverse('awesome') // 'emosewa'
+// reverse('rithmschool') // 'loohcsmhtir'
