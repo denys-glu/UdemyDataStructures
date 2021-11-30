@@ -63,6 +63,36 @@ class BST {
 
     return this.insertRHelper(value, this.root)
   }
+
+  findR(value) {
+    if (this.root === null) {
+      return this;
+    }
+    if (this.root.value === value) {
+      return value;
+    }
+    return this.findRHelper(value, this.root);
+  }
+
+  findRHelper(value, walker) {
+    if (walker.value === value) {
+      console.log("Found one");
+      return this;
+    }
+    if (value < walker.value) {
+      if (walker.left === null) {
+        return this;
+      }
+      return this.findRHelper(value, walker.left);
+    }
+
+    if (value > walker.value) {
+      if (walker.right === null) {
+        return this;
+      }
+      return this.findRHelper(value, walker.right);
+    }
+  }
 }
 
 let tree = new BST();
