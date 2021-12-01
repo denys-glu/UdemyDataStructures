@@ -119,3 +119,33 @@ function someRecursive(arr, callback){
 // someRecursive([4,6,8,9], isOdd) // true
 // someRecursive([4,6,8], isOdd) // false
 // someRecursive([4,6,8], val =&gt; val &gt; 10); // false
+
+
+// Write a recursive function called flatten which accepts an array of arrays and returns a new array with all values flattened.
+function flatten(arr){
+  // add whatever parameters you deem necessary - good luck!
+  let result = []
+
+  function helper(myArr){
+     console.log(arr)
+    if (myArr.length === 0) return myArr;
+    
+    if (Array.isArray(myArr[0])) {
+        // making another recursive call, making sure that we are not losing any inner arrays, we will lose it if we will use return
+        helper(myArr[0])
+    } else {
+      result.push(myArr[0])
+    }
+    
+    return helper(myArr.slice(1))
+  }
+  
+  helper(arr)
+
+  return result;
+}
+
+// flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+// flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3]
