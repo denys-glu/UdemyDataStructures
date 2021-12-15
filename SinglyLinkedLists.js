@@ -90,6 +90,23 @@ class SinglyLinkedList {
     this.length++
     return this
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length ) return null
+    if (!this.head) return "List is empty"
+
+    let walker = this.head
+    let steps = 0
+    while(steps <= this.length) {
+      if(index === steps) {
+        return walker
+      }
+      walker = walker.next
+      steps++
+    }
+    return null
+  }
+
 }
 
 const SLL = new SinglyLinkedList();
