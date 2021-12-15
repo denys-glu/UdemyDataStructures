@@ -67,6 +67,15 @@ class SinglyLinkedList {
     return this;
   }
 
+  shift() {
+    if (!this.head) return undefined
+
+    let temp = this.head
+    this.head = temp.next
+    this.length--
+    
+    return temp
+  }
 }
 
 const SLL = new SinglyLinkedList();
