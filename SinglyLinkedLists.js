@@ -115,6 +115,25 @@ class SinglyLinkedList {
     } 
     return false
   }
+
+  insert(index, value) {
+    if (index < 0 || index > this.length ) return false
+    if (index === 0) {
+      this.unshift(value)
+      return true
+    }
+
+    if (index === this.length) {
+      this.push(value)
+      return true
+    }
+    let newNode = new Node(value)
+    let previous = this.get(index - 1)
+    newNode.next = previous.next
+    previous.next = newNode
+    this.length++
+    return true
+  }
 }
 
 const SLL = new SinglyLinkedList();
