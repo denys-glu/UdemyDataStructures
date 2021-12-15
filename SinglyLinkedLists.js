@@ -134,6 +134,19 @@ class SinglyLinkedList {
     this.length++
     return true
   }
+
+  remove(index) {
+    if (index < 0 || index >= this.length ) return undefined
+    if (index === this.length - 1) return this.pop()
+    if (index === 0) return this.shift()
+     
+    let chosenOne = this.get(index - 1)
+    let result = chosenOne.next.value
+    chosenOne.next = chosenOne.next.next
+    this.length--
+    
+    return result
+  }
 }
 
 const SLL = new SinglyLinkedList();
