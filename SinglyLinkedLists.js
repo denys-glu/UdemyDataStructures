@@ -147,6 +147,25 @@ class SinglyLinkedList {
     
     return result
   }
+
+  reverse() {
+    if(!this.head) return undefined
+    let previous = null, 
+        current = this.head,
+        next = null
+
+      //this.head = this.tail
+        this.tail = current
+
+    while(current) {
+      next = current.next // saving next pointer
+      current.next = previous // actual reversing
+      previous = current // moving forward
+      current = next // moving forward
+    }
+    this.head = previous
+    return this
+  }
 }
 
 const SLL = new SinglyLinkedList();
